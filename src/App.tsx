@@ -48,10 +48,10 @@ function App() {
     : { usd: 0, ars: 0 };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-white text-black">
       <div className="max-w-2xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">
-          Travel Helper
+        <h1 className="text-3xl font-bold text-center mb-8">
+          Precios Colombia 2025
         </h1>
 
         <Navigation
@@ -84,7 +84,7 @@ function App() {
           <div className="space-y-4">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-white text-black py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
             >
               <Plus className="h-5 w-5" />
               <span>Agregar Producto</span>
