@@ -45,7 +45,7 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
       .filter(p => selectedProducts.has(p.id))
       .map(product => {
         const { usd, ars } = convertCurrency(product.priceCOP, rates);
-        return `${product.name}: $${product.priceCOP.toLocaleString()}COP | ${usd.toLocaleString()} USD | $${ars.toLocaleString()} ARS`;
+        return `${product.name}: $${product.priceCOP ? product.priceCOP.toLocaleString() : 'N/A'} COP | ${usd ? usd.toLocaleString() : 'N/A'} USD | $${ars ? ars.toLocaleString() : 'N/A'} ARS`;
       })
       .join('\n');
 
@@ -62,7 +62,7 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={toggleSelectAll}
-          className="flex items-center gap-2 px-3 py-2 text-sm text-black hover:text-gray-800"
+          className="flex items-center gap-2 px-3 py-2 text-sm text-black hover:text-gray-700"
         >
           {selectedProducts.size === products.length ? <CheckSquare className="h-4 w-4" /> : <Square className="h-4 w-4" />}
           {selectedProducts.size === products.length ? 'Deseleccionar Todo' : 'Seleccionar Todo'}
@@ -142,12 +142,14 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
                       />
                     </div>
                   )}
-                  <button
-                    onClick={() => onDelete(product.id)}
-                    className="text-black hover:text-gray-700 p-1"
-                  >
-                    <Trash2 className="h-5 w-5" />
-                  </button>
+                  <div className="flex justify-between items-center">
+                    <button
+                      onClick={() => onDelete(product.id)}
+                      className="text-black hover:text-gray-700 p-1 flex items-center"
+                    >
+                      <Trash2 className="h-5 w-5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

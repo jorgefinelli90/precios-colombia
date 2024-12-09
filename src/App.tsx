@@ -5,16 +5,19 @@ import { ProductModal } from './components/ProductModal';
 import { ProductList } from './components/ProductList';
 import { CurrencyInput } from './components/CurrencyInput';
 import { ConversionResult } from './components/ConversionResult';
+import { ConversionResultARS } from './components/ConversionResultARS';
 import { RatesConfig } from './components/RatesConfig';
 import { Product, defaultRates } from './types';
 import { saveProducts, loadProducts } from './utils/storage';
 import { convertCurrency } from './utils/currency';
+import './styles.css';
 
 function App() {
   const [currentView, setCurrentView] = useState<'converter' | 'wishlist'>('converter');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [amount, setAmount] = useState('');
+  const [amountARS, setAmountARS] = useState('');
   const [rates, setRates] = useState(defaultRates);
 
   useEffect(() => {
@@ -43,9 +46,19 @@ function App() {
     saveProducts(updatedProducts);
   };
 
-  const { usd = 0, ars = 0 } = amount 
-    ? convertCurrency(Number(amount), rates) 
+  const { usd, ars } = amount
+    ? { 
+        usd: Number(amount) / 4200, 
+        ars: (Number(amount) / 4200) * 1060 
+      }
     : { usd: 0, ars: 0 };
+
+  const { usd: usdFromARS, cop: copFromARS } = amountARS
+    ? { 
+        usd: Number(amountARS) / 1060,
+        cop: (Number(amountARS) / 1060) * 4200
+      }
+    : { usd: 0, cop: 0 };
 
   return (
     <div className="min-h-screen bg-white text-black">
@@ -70,9 +83,25 @@ function App() {
                   <CurrencyInput
                     value={amount}
                     onChange={setAmount}
+                    placeholder="Ingrese monto en COP"
                   />
                 </div>
                 <ConversionResult usd={usd} ars={ars} />
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 mt-6">
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Monto en Pesos Argentinos (ARS)
+                  </label>
+                  <CurrencyInput
+                    value={amountARS}
+                    onChange={setAmountARS}
+                    placeholder="Ingrese monto en ARS"
+                  />
+                </div>
+                <ConversionResultARS usd={usdFromARS} cop={copFromARS} />
               </div>
             </div>
             <RatesConfig

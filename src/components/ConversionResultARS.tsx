@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface ConversionResultProps {
+interface ConversionResultARSProps {
   usd: number;
-  ars: number;
+  cop: number;
 }
 
-export function ConversionResult({ usd, ars }: ConversionResultProps) {
+export function ConversionResultARS({ usd, cop }: ConversionResultARSProps) {
   return (
     <div className="space-y-4">
       <div className="bg-blue-50 p-4 rounded-lg">
@@ -14,7 +14,7 @@ export function ConversionResult({ usd, ars }: ConversionResultProps) {
       </div>
       <div className="bg-green-50 p-4 rounded-lg">
         <p className="text-sm text-green-600 font-medium">Pesos Colombianos (COP)</p>
-        <p className="text-2xl font-bold text-green-700">${ars ? ars.toLocaleString() : '0'}</p>
+        <p className="text-2xl font-bold text-green-700">${cop ? cop.toLocaleString() : '0'}</p>
       </div>
     </div>
   );
