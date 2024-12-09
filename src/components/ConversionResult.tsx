@@ -13,7 +13,7 @@ export function ConversionResult({ usd, ars }: ConversionResultProps) {
         <p className="text-2xl font-bold text-blue-700">${usd ? usd.toLocaleString() : '0'}</p>
       </div>
       <div className="bg-green-50 p-4 rounded-lg">
-        <p className="text-sm text-green-600 font-medium">Pesos Colombianos (COP)</p>
+        <p className="text-sm text-green-600 font-medium">Pesos Argentinos (ARS)</p>
         <p className="text-2xl font-bold text-green-700">${ars ? ars.toLocaleString() : '0'}</p>
       </div>
     </div>
