@@ -62,7 +62,7 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={toggleSelectAll}
-          className="flex items-center gap-2 px-3 py-2 text-sm text-black hover:text-gray-700"
+          className="flex items-center gap-2 px-3 py-2 text-sm text-black hover:text-black-700"
         >
           {selectedProducts.size === products.length ? <CheckSquare className="h-4 w-4" /> : <Square className="h-4 w-4" />}
           {selectedProducts.size === products.length ? 'Deseleccionar Todo' : 'Seleccionar Todo'}
