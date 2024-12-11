@@ -12,6 +12,6 @@ export interface ExchangeRates {
 }
 
 export const defaultRates: ExchangeRates = {
-  usdToCop: 4200,
+  usdToCop: 4370,
   usdToArs: 1060,
 };

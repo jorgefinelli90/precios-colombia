@@ -158,7 +158,7 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
       })}
       
       {products.length === 0 && (
-        <p className="text-center text-gray-500 py-8">
+        <p className="text-center text-black-500 py-8">
           No hay productos en la lista
         </p>
       )}

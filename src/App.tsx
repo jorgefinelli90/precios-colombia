@@ -48,21 +48,35 @@ function App() {
 
   const { usd, ars } = amount
     ? { 
-        usd: Number(amount) / 4200, 
-        ars: (Number(amount) / 4200) * 1060 
+        usd: Number(amount) / rates.usdToCop, 
+        ars: (Number(amount) / rates.usdToCop) * rates.usdToArs 
       }
     : { usd: 0, ars: 0 };
 
   const { usd: usdFromARS, cop: copFromARS } = amountARS
     ? { 
-        usd: Number(amountARS) / 1060,
-        cop: (Number(amountARS) / 1060) * 4200
+        usd: Number(amountARS) / rates.usdToArs,
+        cop: (Number(amountARS) / rates.usdToArs) * rates.usdToCop
       }
     : { usd: 0, cop: 0 };
 
   return (
-    <div className="min-h-screen bg-white text-black">
-      <div className="max-w-2xl mx-auto py-12 px-4">
+    <div className="min-h-screen relative">
+      <div 
+        style={{ 
+          backgroundImage: 'url(/background.jpg)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          opacity: 0.7,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          zIndex: -1
+        }}
+      />
+      <div className="relative z-10 max-w-2xl mx-auto py-12 px-4">
         <h1 className="text-3xl font-bold text-center mb-8">
           Precios Colombia 2025
         </h1>
