@@ -5,6 +5,7 @@ import { convertCurrency } from '../utils/currency';
 import { getMercadoLibreSearchUrl } from '../utils/mercadolibre';
 import { getFalabellaSearchUrl } from '../utils/falabella';
 import ImageModal from './ImageModal';
+import MercadoLibreModal from './MercadoLibreModal';
 
 interface ProductListProps {
   products: Product[];
@@ -16,10 +17,12 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set());
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isMercadoLibreModalOpen, setIsMercadoLibreModalOpen] = useState(false);
+  const [selectedProductName, setSelectedProductName] = useState('');
 
   const handleMercadoLibreSearch = (productName: string) => {
-    const url = getMercadoLibreSearchUrl(productName);
-    window.open(url, '_blank');
+    setSelectedProductName(productName);
+    setIsMercadoLibreModalOpen(true);
   };
 
   const toggleProduct = (id: string) => {
@@ -80,6 +83,12 @@ export function ProductList({ products, rates, onDelete }: ProductListProps) {
       {isModalOpen && selectedImage && (
         <ImageModal imageUrl={selectedImage} onClose={() => setModalOpen(false)} />
       )}
+
+      <MercadoLibreModal 
+        isOpen={isMercadoLibreModalOpen}
+        onClose={() => setIsMercadoLibreModalOpen(false)}
+        productName={selectedProductName}
+      />
 
       {products.map((product) => {
         const { usd, ars } = convertCurrency(product.priceCOP, rates);
