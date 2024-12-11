@@ -8,7 +8,7 @@ interface NavigationProps {
 
 export function Navigation({ currentView, onViewChange }: NavigationProps) {
   return (
-    <div className="flex gap-4 mb-6">
+    <div className="flex gap-4 mb-6 montserrat-medium">
       <button
         onClick={() => onViewChange('converter')}
         className={`flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg transition-colors ${

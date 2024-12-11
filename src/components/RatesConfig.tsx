@@ -19,14 +19,14 @@ export function RatesConfig({ rates, onRatesChange }: RatesConfigProps) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-md">
+    <div className="bg-white p-4 rounded-lg shadow-md montserrat-regular">
       <div className="flex items-center gap-2 mb-4">
         <Settings className="h-5 w-5 text-gray-600" />
-        <h2 className="text-lg font-semibold">Configuración de Tasas</h2>
+        <h2 className="text-lg montserrat-semibold">Configuración de Tasas</h2>
       </div>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm montserrat-medium text-gray-700">
             1 USD = COP
           </label>
           <input
@@ -37,7 +37,7 @@ export function RatesConfig({ rates, onRatesChange }: RatesConfigProps) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm montserrat-medium text-gray-700">
             1 USD = ARS
           </label>
           <input

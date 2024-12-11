@@ -77,8 +77,17 @@ function App() {
         }}
       />
       <div className="relative z-10 max-w-2xl mx-auto py-12 px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          Precios Colombia 2025
+        <h1 className="text-3xl montserrat-bold text-center mb-8">
+          <span className="text-gray-900">Precios</span> 
+          <span 
+            className="bg-[url('/colombian-flag.jpg')] bg-clip-text text-transparent bg-contain bg-center"
+            style={{
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            Colombia 25
+          </span>
         </h1>
 
         <Navigation
@@ -87,11 +96,11 @@ function App() {
         />
 
         {currentView === 'converter' ? (
-          <div className="space-y-6">
+          <div className="space-y-6 montserrat-regular">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm montserrat-medium text-gray-700 mb-2">
                     Monto en Pesos Colombianos (COP)
                   </label>
                   <CurrencyInput
@@ -106,7 +115,7 @@ function App() {
             <div className="bg-white rounded-lg shadow-md p-6 mt-6">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm montserrat-medium text-gray-700 mb-2">
                     Monto en Pesos Argentinos (ARS)
                   </label>
                   <CurrencyInput
@@ -124,7 +133,7 @@ function App() {
             />
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4 montserrat-regular">
             <button
               onClick={() => setIsModalOpen(true)}
               className="w-full bg-white text-black py-3 px-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
